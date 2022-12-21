@@ -29,9 +29,12 @@
             </header>
     
             <main>
-                <div class="row">
-                    <div v-show="randomMails.length >= 10 " v-for="mail in randomMails" class="col-12 text-center text-danger fs-3 fw-bold">
+                <div class="row d-flex justify-content-center">
+                    <div v-if="randomMails.length >= 10 " v-for="mail in randomMails" class="col-12 text-center  text-success fs-3 fw-bold">
                         {{mail}}
+                    </div>
+                    <div class="loading text-center p-3 fs-3 fw-bold text-info" v-else>
+                    Nessuna mail generata!
                     </div>
                 </div>
             </main>
