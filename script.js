@@ -3,22 +3,20 @@ const { crateApp } = Vue
     .createApp({
         data() {
             return {
-                randomMail : '',
+                randomMails : [],
             }
         },
 
         methods: {
             generateNewMail(){
-                axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
-                    .then((response) => {
-                    console.log(response.data.response);
-                    this.randomMail = response.data.response;
-                });
+                for(let i = 0; i < 10; i++){
+                    axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
+                        .then((response) => {
+                        console.log(response.data.response);
+                        this.randomMails.push(response.data.response);
+                    });
+                }
             }
         },
-
-        created(){
-            this.generateNewMail()
-        }
     }).mount('#app');
 
